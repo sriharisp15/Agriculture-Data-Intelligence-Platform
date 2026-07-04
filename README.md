@@ -1,60 +1,187 @@
-# Agriculture Data Intelligence Platform
+# 🌾 Agriculture Data Intelligence Platform
 
-An end-to-end data platform for analyzing agricultural data — from raw data ingestion
-to processed datasets, exploratory analysis, SQL-based querying, and interactive
-dashboards (Power BI and Tableau).
+An end-to-end **Agriculture Data Intelligence Platform** developed using **Python, Pandas, MySQL, SQL, Excel (CSV Dataset), and Power BI** for data cleaning, analysis, database management, and interactive dashboard visualization.
 
-## Project Structure
+---
 
-```
+## 📌 Project Overview
+
+This project analyzes agricultural data from different states, districts, crops, seasons, and years across India. It demonstrates the complete data analytics workflow—from data preprocessing and SQL analysis to interactive Power BI dashboards.
+
+---
+
+## ✨ Features
+
+- 🧹 Data Cleaning using Python (Pandas)
+- 🗄️ MySQL Database Integration
+- 📊 SQL-Based Data Analysis
+- 📈 Interactive Power BI Dashboard
+- 🌍 State-wise Agricultural Analysis
+- 🌾 Crop-wise Production Analysis
+- 📅 Year-wise Production Trends
+- 🍂 Season-wise Analysis
+- 📍 Interactive Map Visualization
+- 🎛️ Dynamic Slicers and Filters
+- 📌 KPI Cards for Business Insights
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Data Cleaning & Analysis |
+| Pandas | Data Processing |
+| MySQL | Database Management |
+| SQL | Data Querying & Analysis |
+| Power BI | Dashboard & Visualization |
+| Excel (CSV) | Dataset |
+
+---
+
+## 📂 Project Structure
+
+```text
 Agriculture-Data-Intelligence-Platform/
 │
-├── data
-│   ├── raw            # Original, unmodified datasets
-│   └── processed      # Cleaned and transformed datasets ready for analysis
-├── notebooks           # Jupyter notebooks for EDA and prototyping
-├── scripts             # Python scripts for ETL, cleaning, and automation
-├── sql                 # SQL scripts for data querying and transformation
-├── dashboard
-│   ├── powerbi         # Power BI dashboard files (.pbix)
-│   └── tableau         # Tableau workbook files (.twbx / .twb)
-├── reports              # Generated reports and summaries
-├── docs                  # Project documentation
-├── images                # Charts, diagrams, and visual assets
-├── README.md
+├── dashboard/
+│   └── Agriculture_Dashboard.pbix
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│       └── cleaned_agriculture_data.csv
+│
+├── docs/
+│
+├── images/
+│
+├── notebooks/
+│
+├── reports/
+│   └── Agriculture_Dashboard.pdf
+│
+├── scripts/
+│   ├── dashboard_metrics.py
+│   ├── data_cleaning.py
+│   ├── eda_analysis.py
+│   ├── execute_sql.py
+│   ├── load_data.py
+│   ├── mysql_connection.py
+│   └── year_analysis.py
+│
+├── sql/
+│   └── query.sql
+│
 ├── requirements.txt
-└── .gitignore
+└── README.md
 ```
 
-## Getting Started
+---
 
-1. Clone the repository.
-2. Create a virtual environment and install dependencies:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-3. Place raw data files in `data/raw/`.
-4. Run processing scripts from `scripts/` to generate cleaned datasets in `data/processed/`.
-5. Explore data using notebooks in `notebooks/`.
-6. Open dashboard files in `dashboard/powerbi/` or `dashboard/tableau/` to view visualizations.
+## 📊 Dashboard Pages
 
-## Folder Details
+### 📌 Dashboard
+- Total Production
+- Total Area
+- Average Yield
+- Total Crops
+- Total States
 
-| Folder | Purpose |
-|---|---|
-| `data/raw` | Unmodified source data (CSV, Excel, API pulls, etc.) |
-| `data/processed` | Cleaned, transformed, analysis-ready data |
-| `notebooks` | Exploratory data analysis and prototyping |
-| `scripts` | Reusable ETL/data-processing Python scripts |
-| `sql` | Queries for extraction, transformation, and reporting |
-| `dashboard/powerbi` | Power BI dashboard files |
-| `dashboard/tableau` | Tableau dashboard files |
-| `reports` | Final reports, PDFs, or summary documents |
-| `docs` | Documentation, data dictionaries, architecture notes |
-| `images` | Diagrams, charts, and screenshots used in docs/reports |
+### 📌 Production Analysis
+- Production by State
+- Production by Crop
+- Production by Season
+- Production by Year
 
-## License
+### 📌 Interactive Analysis
+- State Filter
+- Crop Filter
+- Season Filter
+- Year Filter
+- Interactive Map
 
-Specify your license here.
+---
+
+## 📈 Key Insights
+
+- Kerala is among the leading states in agricultural production.
+- Rice and Coconut are among the highest-producing crops.
+- Agricultural production varies across seasons and years.
+- Interactive slicers allow dynamic exploration of the dataset.
+
+---
+
+## ⚙️ How to Run
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/sriharisp15/Agriculture-Data-Intelligence-Platform.git
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Import Dataset into MySQL
+
+- Create the database.
+- Execute the SQL script (`query.sql`).
+- Import the cleaned CSV dataset.
+
+### 4️⃣ Run Python Scripts
+
+Execute the required scripts from the `scripts` folder for data processing and analysis.
+
+### 5️⃣ Open Power BI Dashboard
+
+Open:
+
+```
+dashboard/Agriculture_Dashboard.pbix
+```
+
+using **Power BI Desktop**.
+
+---
+
+## 📷 Dashboard Preview
+
+> Add screenshots of your dashboard inside the `images/` folder and reference them here.
+
+Example:
+
+```markdown
+![Dashboard](images/dashboard.png)
+```
+
+---
+
+## 🚀 Future Enhancements
+
+- Predictive Yield Analysis using Machine Learning
+- Real-time Data Integration
+- Weather Data Analysis
+- Crop Recommendation System
+- Web-based Dashboard Deployment
+
+---
+
+## 👨‍💻 Author
+
+**Sriharisp15**
+
+GitHub: https://github.com/sriharisp15
+
+---
+
+## 📄 License
+
+This project is intended for educational and portfolio purposes.
+
+---
+
+⭐ **If you found this project helpful, consider giving it a star!**
