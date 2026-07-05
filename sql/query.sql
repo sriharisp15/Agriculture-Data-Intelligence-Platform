@@ -1,0 +1,200 @@
+-- ==========================================
+-- Agriculture Data Intelligence Platform
+-- Complete SQL Script
+-- ==========================================
+
+-- Create Database
+CREATE DATABASE agriculture_db;
+
+-- Use Database
+USE agriculture_db;
+
+-- Create Table
+CREATE TABLE agriculture (
+    State VARCHAR(100),
+    District VARCHAR(100),
+    Crop VARCHAR(100),
+    Crop_Year INT,
+    Season VARCHAR(50),
+    Area FLOAT,
+    Production FLOAT,
+    Yield FLOAT
+);
+
+-- Check Table Structure
+DESCRIBE agriculture;
+
+-- Check Tables
+SHOW TABLES;
+
+-- Enable Local File Import
+SET GLOBAL local_infile = ON;
+
+-- Use Database
+USE agriculture_db;
+
+-- Import CSV Data
+LOAD DATA LOCAL INFILE 'C:/Agriculture-Data-Intelligence-Platform/data/processed/cleaned_agriculture_data.csv'
+INTO TABLE agriculture
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+-- ===================================================
+-- SQL ANALYSIS QUERIES
+-- ===================================================
+
+-- 1. Total Records
+SELECT COUNT(*) AS Total_Records
+FROM agriculture;
+
+-- 2. Top 10 States by Production
+SELECT State,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY State
+ORDER BY Total_Production DESC
+LIMIT 10;
+
+-- 3. Top 10 Crops by Production
+SELECT Crop,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY Crop
+ORDER BY Total_Production DESC
+LIMIT 10;
+
+-- 4. Production by Season
+SELECT Season,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY Season
+ORDER BY Total_Production DESC;
+
+-- 5. Production by Year
+SELECT Crop_Year,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY Crop_Year
+ORDER BY Crop_Year;
+
+-- 6. Average Yield by State
+SELECT State,
+AVG(Yield) AS Avg_Yield
+FROM agriculture
+GROUP BY State
+ORDER BY Avg_Yield DESC
+LIMIT 10;
+
+-- 7. Average Yield by Crop
+SELECT Crop,
+AVG(Yield) AS Avg_Yield
+FROM agriculture
+GROUP BY Crop
+ORDER BY Avg_Yield DESC
+LIMIT 10;
+
+-- 8. Total Area by State
+SELECT State,
+SUM(Area) AS Total_Area
+FROM agriculture
+GROUP BY State
+ORDER BY Total_Area DESC
+LIMIT 10;
+
+-- 9. Total Area by Crop
+SELECT Crop,
+SUM(Area) AS Total_Area
+FROM agriculture
+GROUP BY Crop
+ORDER BY Total_Area DESC
+LIMIT 10;
+
+-- 10. Crop Count by State
+SELECT State,
+COUNT(DISTINCT Crop) AS Crop_Count
+FROM agriculture
+GROUP BY State
+ORDER BY Crop_Count DESC;
+
+-- 11. State-wise Crop Production
+SELECT State,
+Crop,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY State, Crop
+ORDER BY Total_Production DESC;
+
+-- 12. Average Yield by Season
+SELECT Season,
+AVG(Yield) AS Avg_Yield
+FROM agriculture
+GROUP BY Season
+ORDER BY Avg_Yield DESC;
+
+-- 13. Highest Production Year
+SELECT Crop_Year,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY Crop_Year
+ORDER BY Total_Production DESC
+LIMIT 1;
+
+-- 14. Top 5 Crops in Tamil Nadu
+SELECT Crop,
+SUM(Production) AS Total_Production
+FROM agriculture
+WHERE State = 'Tamil Nadu'
+GROUP BY Crop
+ORDER BY Total_Production DESC
+LIMIT 5;
+
+-- 15. Top 5 Crops in Kerala
+SELECT Crop,
+SUM(Production) AS Total_Production
+FROM agriculture
+WHERE State = 'Kerala'
+GROUP BY Crop
+ORDER BY Total_Production DESC
+LIMIT 5;
+
+-- 16. Rice Production Trend
+SELECT Crop_Year,
+SUM(Production) AS Rice_Production
+FROM agriculture
+WHERE Crop = 'Rice'
+GROUP BY Crop_Year
+ORDER BY Crop_Year;
+
+-- 17. Wheat Production Trend
+SELECT Crop_Year,
+SUM(Production) AS Wheat_Production
+FROM agriculture
+WHERE Crop = 'Wheat'
+GROUP BY Crop_Year
+ORDER BY Crop_Year;
+
+-- 18. Top 10 Districts by Production
+SELECT District,
+SUM(Production) AS Total_Production
+FROM agriculture
+GROUP BY District
+ORDER BY Total_Production DESC
+LIMIT 10;
+
+-- 19. Number of Districts in Each State
+SELECT State,
+COUNT(DISTINCT District) AS District_Count
+FROM agriculture
+GROUP BY State
+ORDER BY District_Count DESC;
+
+-- 20. Top 10 Highest Yield Records
+SELECT State,
+District,
+Crop,
+Yield
+FROM agriculture
+ORDER BY Yield DESC
+LIMIT 10;
